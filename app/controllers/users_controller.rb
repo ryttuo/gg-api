@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     skip_before_action :authorized, only: [ :create ]
 
     def create
-        @user = User.new(params.require(:user).permit(:email, :password))
+        @user = User.new(params.require(:user).permit(:email, :password, :first_name, :last_name))
 
         existing_user = User.find_by(email: params[:user][:email])
         if existing_user
